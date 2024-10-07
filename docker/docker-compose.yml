@@ -1,0 +1,32 @@
+version: "3.8"
+name: short-url-generation-service
+services:
+  url-service:
+    container_name: url-service
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    entrypoint: /entrypoint.sh
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "urls"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    expose:
+      - "5429"
+    ports:
+      - "5429:5432"
+
+volumes:
+  db_data:

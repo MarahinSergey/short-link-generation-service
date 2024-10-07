@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "short-url-generation-service"
+version = "0.1.0"
+description = "Creating a short url. Deleting a url. Getting a full URL."
+authors = ["Марахин Сергей <marahin.sv@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.6"
+fastapi = "^0.115.0"
+SQLAlchemy = "^2.0.35"
+alembic = "^1.13.3"
+psycopg2-binary = "^2.9.9"
+uvicorn = "^0.31.0"
+toml = "^0.10.2"
+sqlalchemy-utils = "^0.41.2"
+pydantic-settings = "^2.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
